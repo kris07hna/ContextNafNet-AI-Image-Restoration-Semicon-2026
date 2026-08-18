@@ -12,6 +12,12 @@ from __future__ import annotations
 import sys
 import time
 from pathlib import Path
+
+# Ensure src/ is automatically on sys.path regardless of how python is invoked
+SRC_DIR = Path(__file__).resolve().parent / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
 import numpy as np
 import torch
 import torch.nn.functional as F
