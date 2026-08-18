@@ -1,0 +1,41 @@
+seed: 2026
+data_root: outputs/ddp-smoke
+train_lr_dir: train/NoisyLR
+train_gt_dir: train/GT
+split_manifest: outputs/ddp-smoke/splits/split.json
+output_dir: outputs/ddp-smoke/checkpoints
+report_dir: outputs/ddp-smoke/reports
+model:
+  name: multiscale_naf
+  in_channels: 8
+  input_mode: noise_aware
+  width: 8
+  blocks: [1, 1, 1]
+  conditioning: true
+  scale: 2
+training:
+  epochs: 2
+  batch_size: 2
+  validation_batch_size: 1
+  gradient_accumulation: 2
+  lr_crop_size: 16
+  lr: 0.0002
+  weight_decay: 0.0001
+  warmup_steps: 1
+  log_every_steps: 1
+  validate_every_steps: 2
+  save_every_steps: 100
+  num_workers: 0
+  amp: false
+  ema_decay: 0.9
+  grad_clip: 0.0
+  pixel_loss: charbonnier
+  pixel_loss_weight: 0.70
+  ssim_loss_weight: 0.20
+  gradient_loss_weight: 0.10
+  frequency_loss_weight: 0.0
+  synthetic_probability: 0.5
+  final_phase_fraction: 0.5
+  final_phase_weights: [20.0, 0.0, 0.0, 0.0]
+  final_phase_pixel_loss: mse
+device: auto

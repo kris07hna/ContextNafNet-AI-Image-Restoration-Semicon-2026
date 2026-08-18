@@ -1,0 +1,1 @@
+{"train": ["img000.npy", "img001.npy", "img002.npy", "img003.npy", "img004.npy", "img005.npy", "img006.npy", "img007.npy"], "validation": ["img008.npy", "img009.npy", "img010.npy", "img011.npy"]}

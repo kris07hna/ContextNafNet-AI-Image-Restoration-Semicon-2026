@@ -1,0 +1,25 @@
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Large Datasets & Inference Output Predictions
+train/
+Test_NoisyLR/
+outputs/*.npy
+!outputs/.gitkeep
+
+# IDE & Antigravity/Gemini Configs
+.vscode/
+.idea/
+.claude/
+.gemini/
+*.log
+
+# OS Junk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,52 @@
+# Canonical Production Configuration: 72-Epoch Cloud Model Architecture
+experiment_name: full-power-72ep
+data_root: .
+train_lr_dir: train/train/NoisyLR
+train_gt_dir: train/train/GT
+val_lr_dir: train/train/NoisyLR
+val_gt_dir: train/train/GT
+val_manifest: splits/grouped-v1.json
+split_group: val
+
+# Model Architecture: ContextNAFNet (Winning 29.15 dB / 0.82486 SSIM)
+model:
+  name: context_naf
+  in_channels: 8
+  width: 64
+  blocks: [6, 8, 8]
+  kernel_size: 7
+  intro_kernel_size: 5
+  bottleneck_attention_blocks: 2
+
+# Training Hyperparameters
+epochs: 72
+batch_size: 8
+accumulate_grad_batches: 4
+num_workers: 4
+mixed_precision: true
+precision: fp16
+optimizer: adamw
+lr: 2.0e-4
+min_lr: 1.0e-6
+weight_decay: 1.0e-4
+
+# Learning Rate Scheduler
+scheduler: cosine
+warmup_epochs: 3
+
+# Loss Configuration
+loss:
+  pixel_loss: mse
+  pixel_weight: 1.0
+  frequency_weight: 0.0
+  ssim_weight: 0.0
+  gradient_weight: 0.0
+
+# Augmentation & Patch Training
+patch_size: 128
+use_synthetic_pairs: false
+
+# Validation & Checkpoints
+val_freq_epochs: 1
+save_top_k: 3
+checkpoint_dir: checkpoints

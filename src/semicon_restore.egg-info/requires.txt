@@ -1,0 +1,12 @@
+numpy<3,>=1.26
+PyYAML<7,>=6.0
+tqdm<5,>=4.66
+
+[dev]
+pytest<9,>=8
+ruff<1,>=0.6
+
+[train]
+scikit-image<1,>=0.22
+lpips<1,>=0.1.4
+matplotlib<4,>=3.8
